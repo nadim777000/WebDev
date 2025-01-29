@@ -1,0 +1,20 @@
+document.addEventListener("DOMContentLoaded", function () {
+    // 1. Change Background Color when clicking the button
+    document.getElementById("changeColor").addEventListener("click", function () {
+        document.body.style.backgroundColor = "#CCCCFF"; // Light purple color
+    });
+
+    // 2. Add new list item to the <ul> when clicking the button
+    document.getElementById("addItem").addEventListener("click", function () {
+        let ul = document.getElementById("itemList"); // Get the <ul> element
+        let newItem = document.createElement("li"); // Create a new <li>
+        newItem.textContent = "Item " + (ul.children.length + 1); // Set text dynamically
+        newItem.classList.add("item"); // Add class for styling
+        ul.appendChild(newItem); // Append the new item
+    });
+
+    // 3. Live update the output div as user types
+    document.getElementById("userInput").addEventListener("keyup", function () {
+        document.getElementById("output").textContent = this.value || "Output will be displayed here.";
+    });
+});
