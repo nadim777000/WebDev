@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation Practice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        #output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+        .item {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>DOM Manipulation Practice</h1>
+    <button id="changeColor">Change Background Color</button>
+    <button id="addItem">Add List Item</button>
+    <button id="removeItem">Remove Last Item</button>
+    <button id="displayMessage">Display Message</button>
+    
+    <ul id="itemList">
+        <li class="item">Item 1</li>
+        <li class="item">Item 2</li>
+        <li class="item">Item 3</li>
+    </ul>
+    
+    <input type="text" id="userInput" placeholder="Enter some text" />
+    <button id="updateInput">Update Input Value</button>
+    
+    <div id="output">Output will be displayed here.</div>
+
+    <script>
+        // Change background color
+        document.getElementById('changeColor').addEventListener('click', function() {
+            document.body.style.backgroundColor = 'yellow';
+        });
+        
+        // Add list item
+        document.getElementById('addItem').addEventListener('click', function() {
+            var itemList = document.getElementById('itemList');
+            var newItem = document.createElement('li');
+            newItem.className = 'item';
+            newItem.textContent = 'Item ' + (itemList.children.length + 1);
+            itemList.appendChild(newItem);
+        });
+        
+        // Remove last item check if it is empty or not
+        document.getElementById('removeItem').addEventListener('click', function() {
+            var itemList = document.getElementById('itemList');
+            if (itemList.children.length > 0) {
+                itemList.removeChild(itemList.children[itemList.children.length - 1]);
+            }
+        });
+        
+        // Display message
+        document.getElementById('displayMessage').addEventListener('click', function() {
+            document.getElementById('output').textContent = 'This is a message';
+        });
+        
+        // Update input value
+        document.getElementById('updateInput').addEventListener('click', function() {
+            var userInput = document.getElementById('userInput');
+            document.getElementById('output').textContent = userInput.value;
+        });
+
+        // Display input value
+        document.getElementById('userInput').addEventListener('input', function() {
+            document.getElementById('output').textContent = this.value;
+        });
+    </script>
+</body>
+</html>
